@@ -1,0 +1,26 @@
+:root{
+    --background-color: #141E46;
+    --primary-color: #C70039;
+    --secondary-color: #FF6969;
+    --font-color: #FFF5E0;
+}
+html, body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    inset: 0;
+    overflow-x: hidden;
+}
+
+body{
+    background-color: var(--background-color);
+    color: var(--font-color);
+}
+
+/*Mobil*/
+@media (max-width: 900px){
+    html{
+        overflow-y: scroll;
+    }
+}
