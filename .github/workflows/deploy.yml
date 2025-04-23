@@ -3,7 +3,7 @@ name: Sync Folder to Remote Server
 on:
   push:
     paths:
-      - 'dist/browser/*'
+      - 'dist/browser/**/*'
     branches:
       - main
 
