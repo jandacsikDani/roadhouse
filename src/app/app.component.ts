@@ -1,15 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
+import { FooterComponent } from './components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet, RouterLink, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'roadhouse';
   isMenuOpen: boolean = false;
+  windowWith: number = window.innerWidth
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
@@ -23,9 +25,9 @@ export class AppComponent {
 
   openMenu(): void {
     const menu = document.getElementById("mobile_menu") as HTMLElement;
-    menu.style.height = "calc(6 * 40px)";
+    menu.style.height = "calc(4 * 40px)";
 
-    for (let i = 1; i <= 3; i++) {
+    for (let i = 1; i <= 4; i++) {
       const btn = document.getElementById(`nav_btn${i}`) as HTMLElement;
       btn.style.height = "40px";
       btn.style.borderBottom = "1px solid var(--secondary_color)";
@@ -43,7 +45,7 @@ export class AppComponent {
     const menu = document.getElementById("mobile_menu") as HTMLElement;
     menu.style.height = "40px";
 
-    for (let i = 1; i <= 3; i++) {
+    for (let i = 1; i <= 4; i++) {
       const btn = document.getElementById(`nav_btn${i}`) as HTMLElement;
       btn.style.height = "0";
       btn.style.border = "none";
@@ -51,5 +53,18 @@ export class AppComponent {
       const cover = document.getElementById(`menuCover${i}`) as HTMLElement;
       cover.style.width = "100%";
     }
+  }
+
+  selectPage(): void{
+    this.isMenuOpen = false;
+    if(this.windowWith < 900){
+      this.closeMenu();
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event): void{
+    this.windowWith = window.innerWidth;
+    this.closeMenu();
   }
 }

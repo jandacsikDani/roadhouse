@@ -1,9 +1,16 @@
 :root{
     --background-color: #141E46;
-    --primary-color: #C70039;
-    --secondary-color: #FF6969;
+    --primary-color: #A0153E;
+    --secondary-color: #5D0E41;
     --font-color: #FFF5E0;
 }
+/*#C70039*/
+
+@font-face{
+    font-family: 'mainfont';
+    src: url("../public/Roboto-Medium.ttf");
+}
+
 html, body{
     height: 100%;
     width: 100%;
@@ -11,6 +18,7 @@ html, body{
     padding: 0;
     inset: 0;
     overflow-x: hidden;
+    font: 14px normal, 'mainfont';
 }
 
 body{
