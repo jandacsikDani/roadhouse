@@ -9,12 +9,7 @@ footer > p{
 
 footer > div{
     display: flex;
-    flex-direction: row;
     margin: 0 auto;
-}
-
-#open{
-    padding-left: 10px;
 }
 
 #open > div:last-child{
@@ -22,25 +17,42 @@ footer > div{
     grid-template-columns: 100px auto;
 }
 
-#open > div:first-child{
-    padding: 15px 0;
-}
+
 
 #info{
-    border-right: 1px solid var(--font-color);
-    padding-right: 10px;
-    margin-top: 10px;
-    padding-top: 5px;
     display: grid;
     grid-template-columns: 100px auto;
 }
 
 /*Desktop*/
 @media (min-width: 900px){
-    
+    footer > div{
+        flex-direction: row;
+    }
+    #open > div:first-child{
+        padding: 15px 0;
+    }
+    #open{
+        padding-left: 10px;
+    }
+    #info{
+        border-right: 1px solid var(--font-color);
+        padding-right: 10px;
+        margin-top: 10px;
+        padding-top: 5px;
+    }
 }
 
 /*Mobil*/
 @media (max-width: 900px){
-    #open{}
+    footer > div{
+        flex-direction: column;
+    }
+    #info{
+        border-bottom: 1px solid var(--font-color);
+        padding: 10px 0 10px;
+    }
+    #open{
+        margin-top: 10px;
+    }
 }
