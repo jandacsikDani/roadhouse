@@ -20,6 +20,12 @@ header > img{
     padding: 15px;
 }
 
+nav{
+    position: sticky;
+    z-index: 999;
+    top: 0
+}
+
 #header_content{
     width: 100%;
     display: flex;
@@ -75,12 +81,6 @@ header > div > div:last-child:hover{
 
 /*Mobil*/
 @media (max-width: 900px){
-    nav{
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-    }
-
     #mobile_menu {
         display: flex;
         flex-direction: column;
