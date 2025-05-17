@@ -17,10 +17,11 @@
 .section_header{
     display: grid;
     grid-template-columns: 2fr 1fr 2fr;
+    font: 1vw normal, 'food-font';
 }
 
 .section_header > span{
-    background-color: white;
+    background-color: black;
     height: 2px;
     margin: auto 0;
 }
@@ -39,7 +40,7 @@
 }
 
 .section_entry:not(:last-of-type){
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid black;
 }
 
 .section_entry:not(:first-of-type){
@@ -60,4 +61,8 @@
 .entry_content > div:last-child{
     color: gray;
     padding: 5px 0 10px 20px;
+}
+
+#header{
+    font-size: 3vw;
 }

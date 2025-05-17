@@ -1,14 +1,24 @@
 :root{
-    --background-color: #141E46;
+    --background-color: white;
     --primary-color: #A0153E;
-    --secondary-color: #5D0E41;
-    --font-color: #FFF5E0;
+    --secondary-color: #3B3B3B;
+    --font-color: black;
 }
 /*#C70039*/
 
 @font-face{
     font-family: 'mainfont';
-    src: url("../public/Roboto-Medium.ttf");
+    src: url("../public/fonts/Roboto-Medium.ttf");
+}
+
+@font-face {
+    font-family: 'title-font';
+    src: url("../public/fonts/Flottflott.ttf");
+}
+
+@font-face {
+    font-family: 'food-font';
+    src: url("../public/fonts/Kalam-Regular.ttf");
 }
 
 html, body{

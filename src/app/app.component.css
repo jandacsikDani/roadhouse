@@ -2,6 +2,7 @@
     background-color: var(--background-color);
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .nav_button{
@@ -11,8 +12,10 @@
 header{
     display: flex;
     flex-direction: row;
-    background-color: var(--primary-color);
+    background-color: var(--background-color);
+    height: 15vh;
 }
+
 
 header > img{
     height: auto;
@@ -20,19 +23,12 @@ header > img{
     padding: 15px;
 }
 
-nav{
-    position: sticky;
-    z-index: 999;
-    top: 0
-}
-
 #header_content{
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     margin: auto 0;
-    font: 25px normal, 'mainfont';
 }
 
 #header_content > div:first-child{
@@ -40,22 +36,11 @@ nav{
     align-items: center;
 }
 
-header > div > div:last-child{
-    padding: 10px;
-    background-color: #FF9D23;
-    color: #F1EFEC;
-    border-radius: 30px;
-    margin-right: 15px;
-}
-header > div > div:last-child:hover{
-    background-color: #C14600;
-}
-
 /*Desktop*/
 @media (min-width: 900px){
     nav{
         height: fit-content;
-        background-color: var(--primary-color);
+        background-color: var(--background-color);
         color: var(--font-color);
     }
     
@@ -68,7 +53,8 @@ header > div > div:last-child:hover{
     #mobile_menu{
         display: flex;
         width: 80%;
-        justify-content: flex-start;
+        justify-content: center;
+        margin: 0 auto;
         padding-inline-start: 15px;
     }
     #mobile_menu_openclose{
@@ -77,6 +63,9 @@ header > div > div:last-child:hover{
     .mobil_order{
         display: none !important;
     }
+    #header_content{
+        font: 3vw normal, 'title-font';
+    }
 }
 
 /*Mobil*/
@@ -84,9 +73,10 @@ header > div > div:last-child:hover{
     #mobile_menu {
         display: flex;
         flex-direction: column;
+        align-items: center;
         height: 40px;
         transition: height .6s;
-        background-color: var(--primary-color);
+        background-color: var(--background-color);
         color: var(--font_color);
     }
 
@@ -145,5 +135,9 @@ header > div > div:last-child:hover{
 
     #order_button{
         display: none;
+    }
+
+    #header_content{
+        font: 10vw normal, 'title-font';
     }
 }
