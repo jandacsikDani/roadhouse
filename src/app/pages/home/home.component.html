@@ -2,17 +2,36 @@
     <app-picturegallery></app-picturegallery>
     <div id="welcomebar">
         <h1>Üdvözlünk a RoadHouse Pizzériában</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget leo at metus commodo pretium. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis id cursus est. Phasellus eget tincidunt ex. Aenean scelerisque leo at sem viverra, at porta orci tincidunt. In sed consectetur massa. Praesent suscipit dui id nunc pellentesque, vel varius nibh pulvinar. Ut varius lectus erat, ac tempus tortor convallis nec. Nunc auctor justo ipsum, in mattis mauris pretium in. Donec metus sapien, ullamcorper sed facilisis varius, pretium non dolor. In turpis nisi, finibus at aliquam vel, vehicula et enim.</p>
-        <p>Sed pulvinar leo vel sapien vestibulum, eu sagittis dui hendrerit. Curabitur vitae erat dui. Donec fringilla odio id ligula pretium finibus. Duis ut consectetur ante. Maecenas gravida diam et lobortis imperdiet. Quisque gravida tempor velit a feugiat. In augue dolor, semper sed odio nec, dignissim sodales quam. Vivamus aliquet in felis in dignissim.</p>
     </div>
-    <div id="info">
-        <div>
-            <h2>Házhoz szállítás</h2>
-            <p>Ut ac imperdiet tortor, vitae sodales eros. Vivamus erat lacus, dapibus at efficitur eu, dapibus sed orci. Suspendisse elementum elit sed orci consectetur volutpat. Nunc consequat, purus at facilisis posuere, tortor purus imperdiet sapien, dapibus porttitor arcu eros vel urna. Quisque ac sodales augue, et feugiat nisl. Aliquam sollicitudin, dui nec vulputate mattis, diam tellus rhoncus mauris, eget interdum urna tortor at turpis. Morbi condimentum orci in pulvinar ullamcorper. Sed pellentesque, elit vitae sollicitudin porttitor, nunc lacus tincidunt justo, ut porttitor est nunc sit amet risus. Quisque rutrum, arcu eu porta eleifend, tellus ipsum tristique justo, sed volutpat neque enim quis velit. Donec eleifend mauris et aliquet pharetra. Nunc id tellus bibendum, mattis lectus a, pharetra orci. Proin dapibus faucibus lectus, eu scelerisque tortor vehicula at. Integer faucibus mi eu magna molestie mattis. Vestibulum at bibendum leo. Proin dapibus tellus eget sem imperdiet, tempus tincidunt velit pretium. Morbi euismod scelerisque dictum.</p>
+    <h2>Kínálatunk</h2>
+    <div id="menuItems">
+        <div class="item" (click)="navigateToSection('pizza')">
+            <div><img src="menuPics/pizza.webp"></div>
+            <div>Pizzák</div>
         </div>
-        <div>
-            <h2>Helyben fogyasztás</h2>
-            <p>Morbi accumsan leo diam, ac sodales risus dictum id. In elementum molestie sollicitudin. Fusce sodales diam a ipsum blandit, id venenatis libero suscipit. Integer auctor molestie orci, nec dignissim metus vulputate vel. Fusce consectetur lectus sed blandit pretium. Cras elementum metus ut justo convallis, vitae commodo urna sollicitudin. Mauris vel viverra velit. Maecenas aliquet malesuada libero, id pharetra mi egestas eget. Donec tincidunt lectus vel ligula lobortis facilisis. Praesent ut nibh vel libero vulputate iaculis a vitae tortor. Nunc commodo est at erat rhoncus accumsan. In egestas metus vel pharetra pretium. Donec malesuada, justo non pulvinar imperdiet, tellus sem blandit quam, non porta magna magna eu enim. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+        <div class="item" (click)="navigateToSection('khamburger')">
+            <div><img src="menuPics/hamburger1.webp"></div>
+            <div>Kézműves Hamburgerek</div>
+        </div>
+        <div class="item" (click)="navigateToSection('hamburger')">
+            <div><img src="menuPics/hamburger2.webp"></div>
+            <div>Hamburgerek</div>
+        </div>
+        <div class="item" (click)="navigateToSection('grill')">
+            <div><img src="menuPics/grill.webp"></div>
+            <div>Grill Ételek</div>
+        </div>
+        <div class="item" (click)="navigateToSection('side')">
+            <div><img src="menuPics/side.webp"></div>
+            <div>Köretek</div>
+        </div>
+        <div class="item" (click)="navigateToSection('salad')">
+            <div><img src="menuPics/salad.webp"></div>
+            <div>Saláták</div>
+        </div>
+        <div class="item" (click)="navigateToSection('drink')">
+            <div><img src="menuPics/drinks.webp"></div>
+            <div>Üdítők</div>
         </div>
     </div>
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4645.208818723361!2d20.178020542686898!3d46.18941067363373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47448eb440cc65cf%3A0x1fb14bb947e6958d!2zw5pqc3plbnRpdsOhbiwgRsWRIHV0Y2EgNS8xLCA2NzU0!5e0!3m2!1shu!2shu!4v1747471699506!5m2!1shu!2shu"style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

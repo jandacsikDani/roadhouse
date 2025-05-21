@@ -8,11 +8,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 })
 export class PicturegalleryComponent implements OnInit, OnDestroy{
   images = [
-    'slideimages/slideimg1.jpg',
-    'slideimages/slideimg2.jpg',
-    'slideimages/slideimg3.jpg',
-    'slideimages/slideimg4.jpg',
-    'slideimages/slideimg5.jpg'
+    'slideimages/slideimg1.webp',
+    'slideimages/slideimg2.webp',
+    'slideimages/slideimg3.webp',
+    'slideimages/slideimg4.webp',
+    'slideimages/slideimg5.webp'
   ];
 
   currentIndex = 0;

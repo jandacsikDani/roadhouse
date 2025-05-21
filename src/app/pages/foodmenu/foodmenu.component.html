@@ -5,58 +5,205 @@
         <span></span>
     </div>
     <div class="section">
-        <div class="section_entry">
-                <div class="entry_content">
-                    <div>Kézműves hamburger</div>
-                    <div></div>
-                </div>
-                <div class="entry_price">2390Ft-tól</div>
-            </div>
-        <div class="section_header">
+        <div class="section_header" id="pizza">
             <span></span>
             <h2>Pizzák</h2>
+            <span></span>
+        </div>
+        @for (item of pizza; track $index){
+            @if($index == 0){
+                <div class="section_entry">
+                <div class="entry_content">
+                    <div>{{item.name}}</div>
+                    <div>{{item.desc}}</div>
+                </div>
+                <div class="entry_price">
+                    <div>32cm / 50cm</div>
+                    <div>{{item.price}}</div>
+                </div>
+            </div>
+            }@else{
+                <div class="section_entry">
+                    <div class="entry_content">
+                        <div>{{item.name}}</div>
+                        <div>{{item.desc}}</div>
+                    </div>
+                    <div class="entry_price">{{item.price}}</div>
+                </div>
+            }
+        }
+    </div>
+    <div class="section" id="khamburger">
+        <div class="section_header">
+            <span></span>
+            <h2>Kézműves hamburger</h2>
             <span></span>
         </div>
         <div class="section_content">
             <div class="section_entry">
                 <div class="entry_content">
-                    <div>Margaréta</div>
-                    <div>alap, sajt</div>
+                    <div>Classic Burger</div>
+                    <div>Házi buci, 100% marhapogácsa, jégsaláta, csemege uborka, hamburgerszósz</div>
                 </div>
-                <div class="entry_price">2390Ft, 4900Ft</div>
+                <div class="entry_price">2300Ft</div>
             </div>
             <div class="section_entry">
                 <div class="entry_content">
-                    <div>SonGoKu</div>
-                    <div>alap, sonka, gomba, kukorica, sajt</div>
+                    <div>MegaMarha Burger </div>
+                    <div>Házi buci, 100% marhapogácsa, jégsaláta, csemege uborka, hamburgerszósz, cheddar sajt, sült bacon</div>
                 </div>
-                <div class="entry_price">2790Ft, 5600Ft</div>
+                <div class="entry_price">2500Ft</div>
             </div>
             <div class="section_entry">
                 <div class="entry_content">
-                    <div>Megálló pizza</div>
-                    <div>alap, csirkehusi, bacon, kukorica, lilahagyma, sajt</div>
+                    <div>CsipiMarha Burger</div>
+                    <div>Házi buci, 100% marhapogácsa, jégsaláta, csemege uborka, hamburgerszósz, cheddar sajt, sült bacon</div>
                 </div>
-                <div class="entry_price">2990Ft, 5900Ft</div>
-            </div>
-            <div class="section_entry">
-                <div class="entry_content">
-                    <div>Magyaros pizza</div>
-                    <div>alap, kolbász, bacon, hagyma, paprika, sajt</div>
-                </div>
-                <div class="entry_price">2990Ft, 5900Ft</div>
-            </div>
-            <div class="section_entry">
-                <div class="entry_content">
-                    <div>Lucifer pizza</div>
-                    <div>csipős alap, szalámi, bacon, erős paprika, lilahagyma, sajt</div>
-                </div>
-                <div class="entry_price">2990Ft, 5900Ft</div>
+                <div class="entry_price">2700Ft</div>
             </div>
         </div>
     </div>
     <div class="section">
-        <div class="section_header">
+        <div class="section_header" id="hamburger">
+            <span></span>
+            <h2>Hamburger</h2>
+            <span></span>
+        </div>
+        <div class="section_content">
+            <div class="section_entry">
+                <div class="entry_content">
+                    <div>SimaBurger</div>
+                    <div>hamburger zsemle, hamburger hús, saláta, uborka, paradicsom, lilahagyma, mustár, ketchup</div>
+                </div>
+                <div class="entry_price">1600Ft</div>
+            </div>
+            <div class="section_entry">
+                <div class="entry_content">
+                    <div>VegaBurger</div>
+                    <div>hamburger zsemle, sült sajt, saláta, uborka, paradicsom, lilahagyma, mustár, ketchup</div>
+                </div>
+                <div class="entry_price">1600Ft</div>
+            </div>
+            <div class="section_entry">
+                <div class="entry_content">
+                    <div>SajtosBurger</div>
+                    <div>hamburger zsemle, hamburger hús, sajt, saláta, uborka, paradicsom, lilahagyma, mustár, ketchup</div>
+                </div>
+                <div class="entry_price">1700Ft</div>
+            </div>
+            <div class="section_entry">
+                <div class="entry_content">
+                    <div>BaconBurger</div>
+                    <div>hamburger zsemle, hamburger hús, sajt, bacon, saláta, uborka, paradicsom, lilahagyma, mustár, ketchup</div>
+                </div>
+                <div class="entry_price">1800Ft</div>
+            </div>
+            <div class="section_entry">
+                <div class="entry_content">
+                    <div>HúsimádóBurger</div>
+                    <div>hamburger zsemle, hamburger hús, sajt, sonka, szalámi, bacon, saláta, uborka, paradicsom, lilahagyma, mustár, ketchup</div>
+                </div>
+                <div class="entry_price">1900Ft</div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="section_header" id="grill">
+            <span></span>
+            <h2>Grill ételek</h2>
+            <span></span>
+        </div>
+        <div class="section_content">
+            <div class="section_entry">
+                <div class="entry_content">
+                    <div>Roston csirkemell</div>
+                    <div></div>
+                </div>
+                <div class="entry_price">2300Ft</div>
+            </div>
+            <div class="section_entry">
+                <div class="entry_content">
+                    <div>Roston karaj</div>
+                    <div></div>
+                </div>
+                <div class="entry_price">2300Ft</div>
+            </div>
+            <div class="section_entry">
+                <div class="entry_content">
+                    <div>Csevap, lilahagyma, ajvár</div>
+                    <div></div>
+                </div>
+                <div class="entry_price">2600Ft</div>
+            </div>
+            <div class="section_entry">
+                <div class="entry_content">
+                    <div>Roston tarja</div>
+                    <div></div>
+                </div>
+                <div class="entry_price">2900Ft</div>
+            </div>
+            <div class="section_entry">
+                <div class="entry_content">
+                    <div>Gyros hús</div>
+                    <div></div>
+                </div>
+                <div class="entry_price">2100Ft</div>
+            </div>
+            <div class="section_entry">
+                <div class="entry_content">
+                    <div>Gyros piában</div>
+                    <div>2db- gyros hús, pita, saláta, szósz</div>
+                </div>
+                <div class="entry_price">1900Ft</div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="section_header" id="side">
+            <span></span>
+            <h2>Köretek</h2>
+            <span></span>
+        </div>
+        <div class="section_content">
+            <div class="section_entry">
+                <div class="entry_content">
+                    <div>párolt rizs</div>
+                    <div></div>
+                </div>
+                <div class="entry_price">600Ft</div>
+            </div>
+            <div class="section_entry">
+                <div class="entry_content">
+                    <div>grill zöldség</div>
+                    <div></div>
+                </div>
+                <div class="entry_price">1000Ft</div>
+            </div>
+            <div class="section_entry">
+                <div class="entry_content">
+                    <div>fűszeres steak burgonya</div>
+                    <div></div>
+                </div>
+                <div class="entry_price">800Ft</div>
+            </div>
+            <div class="section_entry">
+                <div class="entry_content">
+                    <div>hasáb burgonya</div>
+                    <div></div>
+                </div>
+                <div class="entry_price">800Ft</div>
+            </div>
+            <div class="section_entry">
+                <div class="entry_content">
+                    <div>sült édes burgonya</div>
+                    <div></div>
+                </div>
+                <div class="entry_price">1000Ft</div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="section_header" id="salad">
             <span></span>
             <h2>Saláták</h2>
             <span></span>
@@ -76,6 +223,84 @@
                 </div>
                 <div class="entry_price">2100Ft</div>
             </div>
+            <div class="section_entry">
+                <div class="entry_content">
+                    <div>Görög saláta</div>
+                    <div></div>
+                </div>
+                <div class="entry_price">1900Ft</div>
+            </div>
         </div>
     </div>
+    <div class="section">
+        <div class="section_header" id="drink">
+            <span></span>
+            <h2>Üdítők</h2>
+            <span></span>
+        </div>
+        <div class="section_content">
+            <div class="section_entry">
+                <div class="entry_content">
+                    <div>Pepsi Cola 0,5</div>
+                    <div></div>
+                </div>
+                <div class="entry_price">500Ft + 50Ft betétdíj</div>
+            </div>
+            <div class="section_entry">
+                <div class="entry_content">
+                    <div>Pepsi Cola Zero 0,5</div>
+                    <div></div>
+                </div>
+                <div class="entry_price">500Ft + 50Ft betétdíj</div>
+            </div>
+            <div class="section_entry">
+                <div class="entry_content">
+                    <div>Pepsi Cola Zero Citrom 0,5</div>
+                    <div></div>
+                </div>
+                <div class="entry_price">500Ft + 50Ft betétdíj</div>
+            </div>
+            <div class="section_entry">
+                <div class="entry_content">
+                    <div>Schweppes Narancs 0,5</div>
+                    <div></div>
+                </div>
+                <div class="entry_price">500Ft + 50Ft betétdíj</div>
+            </div>
+            <div class="section_entry">
+                <div class="entry_content">
+                    <div>Schweppes Citrom 0,5</div>
+                    <div></div>
+                </div>
+                <div class="entry_price">500Ft + 50Ft betétdíj</div>
+            </div>
+            <div class="section_entry">
+                <div class="entry_content">
+                    <div>Kinley Gyömbér 0,5</div>
+                    <div></div>
+                </div>
+                <div class="entry_price">500Ft + 50Ft betétdíj</div>
+            </div>
+            <div class="section_entry">
+                <div class="entry_content">
+                    <div>Kinely Tonic 0,5</div>
+                    <div></div>
+                </div>
+                <div class="entry_price">500Ft + 50Ft betétdíj</div>
+            </div>
+            <div class="section_entry">
+                <div class="entry_content">
+                    <div>Szentkirályi dús 0,5</div>
+                    <div></div>
+                </div>
+                <div class="entry_price">500Ft + 50Ft betétdíj</div>
+            </div>
+            <div class="section_entry">
+                <div class="entry_content">
+                    <div>Szentkirályi mentes 0,5</div>
+                    <div></div>
+                </div>
+                <div class="entry_price">500Ft + 50Ft betétdíj</div>
+            </div>
+        </div>
 </div>

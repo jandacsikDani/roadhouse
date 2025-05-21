@@ -9,7 +9,6 @@ import { FooterComponent } from './components/footer/footer.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'roadhouse';
   isMenuOpen: boolean = false;
   windowWith: number = window.innerWidth
 

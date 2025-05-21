@@ -1,0 +1,50 @@
+#container{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 20px auto;
+    font-size: large;
+}
+
+#container > p {
+    text-align: justify;
+}
+
+#container > h1{
+    text-align: center;
+}
+
+.divider{
+    background-color: black;
+    height: 2px;
+    width: 200px;
+    margin: 0 auto;
+}
+
+#quote{
+    width: 50%;
+    margin: 0 auto;
+}
+
+#quote > h2{
+    text-align: center;
+}
+#quote > p:first-of-type{
+    text-align: center;
+}
+#quote > p:last-of-type{
+    background-color: lightgray;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: justify;
+    font-style: italic;
+}
+
+#name{
+    margin: 10px 0;
+}
+
+#name > div:last-of-type{
+    font-style: italic;
+}
+
