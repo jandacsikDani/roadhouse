@@ -22,7 +22,6 @@
 }
 
 #quote{
-    width: 50%;
     margin: 0 auto;
 }
 
@@ -47,4 +46,14 @@
 #name > div:last-of-type{
     font-style: italic;
 }
+
+/*Desktop*/
+@media (min-width: 900px){
+    #quote{
+        width: 50%;
+    }
+}
+
+/*Mobil*/
+@media (max-width: 900px){}
 

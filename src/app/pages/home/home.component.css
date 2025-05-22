@@ -36,8 +36,6 @@ h2{
 }
 
 .item {
-    width: 800px;
-    height: 200px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -75,10 +73,16 @@ h2{
 
 /*Desktop*/
 @media (min-width: 900px){
-
+    .item{
+        width: 800px;
+        height: 200px;
+    }
 }
 
 /*Mobil*/
 @media (max-width: 900px){
-
+    .item{
+        width: 80%;
+        height: 200px;
+    }
 }
