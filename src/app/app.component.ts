@@ -66,4 +66,8 @@ export class AppComponent {
     this.windowWith = window.innerWidth;
     this.closeMenu();
   }
+
+  externalSite(){
+    window.open("https://www.megalloetterem.com/");
+  }
 }
