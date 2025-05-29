@@ -11,9 +11,9 @@ export class MenuService{
         return prisma.menuItems.findUnique({ where: { id }});
     }
 
-    async create(name: string, description: string, price: number){
+    async create(typeid: number, name: string, description: string, price: number){
         return prisma.menuItems.create({
-            data: {name, description, price}
+            data: {typeid, name, description, price}
         });
     }
 }

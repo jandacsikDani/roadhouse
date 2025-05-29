@@ -17,8 +17,8 @@ export class MenuController{
     }
 
     async create(req: Request, res: Response){
-        const { name, description, price } = req.body;
-        const newItem = await this.service.create(name, description, price);
+        const { typeid, name, description, price } = req.body;
+        const newItem = await this.service.create(typeid, name, description, price);
         res.status(201).json(newItem);
     }
 }

@@ -1,5 +1,16 @@
-import { CanActivateFn } from '@angular/router';
+import { inject } from '@angular/core';
+import { CanActivateFn, Router } from '@angular/router';
+import { isTokenExpired } from '../../../../api/src/utils/token.utils';
 
-export const adminGuardGuard: CanActivateFn = (route, state) => {
-  return true;
+export const adminGuard: CanActivateFn = (route, state) => {
+  const router = inject(Router);
+  
+  const token = localStorage.getItem('token');
+
+  if(token && !isTokenExpired(token)){
+    return true;
+  }
+
+  router.navigate(['/admin']);
+  return false;
 };

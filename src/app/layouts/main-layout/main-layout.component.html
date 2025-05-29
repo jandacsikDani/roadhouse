@@ -1,0 +1,28 @@
+<div class="container">
+    <header>
+        <div id="header_content">
+            <div>RoadHouse Pizzéria</div>
+        </div>
+    </header>
+    <nav>
+        <div id="mobile_menu">
+            <div id="mobile_menu_openclose" role="button" tabindex="1" class="nav_button" (click)="toggleMenu()">
+                <span>Menu</span>
+            </div>
+            <div role="button" tabindex="1" class="nav_button" id="nav_btn1" routerLink='/' (click)="selectPage()">
+                <span>Főoldal<span id="menuCover1"></span></span>
+            </div>
+            <div role="button" tabindex="1" class="nav_button" id="nav_btn2" routerLink='/etlap' (click)="selectPage()">
+                <span>Étlap<span id="menuCover2"></span></span>
+            </div>
+            <div role="button" tabindex="1" class="nav_button" id="nav_btn3" routerLink='/rolunk' (click)="selectPage()">
+                <span>Rólunk<span id="menuCover3"></span></span>
+            </div>
+            <div role="button" tabindex="1" class="nav_button" id="nav_btn4" (click)="externalSite()">
+                <span>Délvidék ház - Megállóétterem<span id="menuCover4"></span></span>
+            </div>
+        </div>
+    </nav>
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+</div>

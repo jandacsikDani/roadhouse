@@ -1,9 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import  jwt from "jsonwebtoken";
-import { nextTick } from "process";
 
 const JWT_SECRET = process.env.JWT_SECRET || 'fallback';
-console.log("JWT_SECRET: " + JWT_SECRET);
 
 export interface AuthRequest extends Request{
     user?: {userId: string};
@@ -11,7 +9,6 @@ export interface AuthRequest extends Request{
 
 export function verifyToken(req: AuthRequest, res: Response, next: NextFunction){
     const authHeader = req.headers.authorization;
-    console.log("authHeader: " + authHeader);
     if(!authHeader || !authHeader.startsWith('Bearer ')){
         res.status(401).json({ message: "Missing or invalid token" });
         return;

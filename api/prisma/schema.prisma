@@ -15,15 +15,21 @@ datasource db {
 
 model MenuItems{
   id  Int @id @default(autoincrement())
+  typeid Int
   name  String
   description String
-  price Int
+  price String
 }
 
 model Users{
   id  Int @id @default(autoincrement())
   username  String  @unique
   password  String
+}
+
+model MenuTypes{
+  id Int @id @default(autoincrement())
+  name String
 }
 
 

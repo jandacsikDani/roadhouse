@@ -1,0 +1,16 @@
+<div id="container">
+    <div>RoadHouse Pizzéria</div>
+    <form class="form" [formGroup]="loginGroup">
+        <span class="input-span">
+            <label for="email" class="label">Azonosító</label>
+            <input type="email" id="email" formControlName="username"/>
+        </span>
+        <span class="input-span">
+            <label for="password" class="label">Jelszó</label>
+            <input type="password" id="password" formControlName="password"/>
+        </span>
+        <p>{{errorMessage}}</p>
+        <button class="submit" (click)="login()">Bejelentkezés</button>
+    </form>
+</div>
+
