@@ -1,0 +1,38 @@
+#container{
+    display: flex;
+    flex-direction: column;
+}
+
+#menu{
+    margin: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#menu > form {
+    display: flex;
+    column-gap: 10px;
+}
+
+#list{
+    width: 70%;
+    margin: 20px auto;
+}
+
+.entry:first-of-type{
+    font-weight: bolder;
+    margin-bottom: 25px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: gainsboro;
+    padding: 10px;
+}
+
+.entry{
+    display: grid;
+    grid-template-columns: 2fr 4fr 1fr 1fr;
+    margin-bottom: 10px;
+}
+

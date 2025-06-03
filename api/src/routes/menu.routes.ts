@@ -5,6 +5,8 @@ import { verifyToken } from "../middleware/verifyToken";
 const router = Router();
 const controller = new MenuController();
 
+router.get('/foodTypes', verifyToken, controller.getFoodTypes.bind(controller));
+router.get('/foodTypes/:id', verifyToken, controller.getFoodsByTypeId.bind(controller));
 router.get('/', verifyToken, controller.getAll.bind(controller));
 router.get('/:id', verifyToken, controller.getById.bind(controller));
 router.post('/', verifyToken, controller.create.bind(controller));

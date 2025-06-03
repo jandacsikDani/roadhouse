@@ -31,6 +31,7 @@ export class AdminComponent implements OnInit{
     this.authService.login(username, password).subscribe({
       next: (res) => {
         localStorage.setItem('token', res.token);
+        localStorage.setItem('isLoggedIn', "true");
         this.router.navigate(['/admin/control']);
       },
       error: (err) => {

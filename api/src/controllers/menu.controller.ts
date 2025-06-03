@@ -4,6 +4,11 @@ import { MenuService } from "../services/MenuService";
 export class MenuController{
     private service = new MenuService();
 
+    async getFoodTypes(req: Request, res: Response){
+        const items = await this.service.getFoodTypes();
+        res.json(items);
+    }
+
     async getAll(req: Request, res: Response){
         const items = await this.service.getAll();
         res.json(items);
@@ -20,5 +25,12 @@ export class MenuController{
         const { typeid, name, description, price } = req.body;
         const newItem = await this.service.create(typeid, name, description, price);
         res.status(201).json(newItem);
+    }
+
+    async getFoodsByTypeId(req: Request, res: Response){
+        const id = Number(req.params.id);
+        const items = await this.service.getFoodsByTypeId(id);
+        if(items.length === 0) res.status(404).json({ message: "Food type dosent exits"});
+        else res.json(items);
     }
 }

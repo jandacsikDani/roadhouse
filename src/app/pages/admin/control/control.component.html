@@ -1,1 +1,34 @@
-<p>control works!</p>
+<div id="container">
+    <div id="menu">
+        <form [formGroup]="sort">
+            <label for="foodType">Étel típus:</label>
+            <select id="foodType" (change)="foodTypeChange()" formControlName="foodType">
+                <option value="0">Összes</option>
+                @for (foodtype of foodtypes; track $index){
+                    <option value="{{foodtype.id}}">{{foodtype.name}}</option>
+                }
+            </select>
+        </form>
+        <div>
+            <button>Új étel hozzáadása</button>
+            <button (click)="logout()">Kijelentkezés</button>
+        </div>
+    </div>
+    <div id="list">
+        <div class="entry">
+            <div>Név</div>
+            <div>Leírás</div>
+            <div>Ár</div>
+            <div>Művelet</div>
+        </div>
+        @for(food of foods; track $index){
+            <div class="entry">
+                <div>{{food.name}}</div>
+                <div>{{food.description}}</div>
+                <div>{{food.price}}</div>
+                <button>Szerkeszt</button>
+            </div>
+        }
+        <div>Összes termék: {{foods.length}}</div>
+    </div>
+</div>
