@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Food } from '../../models/Food';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +21,9 @@ export class MenuService{
 
   getFoodsByTypeId(id: string | null | undefined): Observable<{id: number, typeid: number, name: string, description: string, price: string}[]>{
     return this.http.get<{id: number, typeid: number, name: string, description: string, price: string}[]>(`${this.apiUrl}/foodTypes/${id}`);
+  }
+
+  addNewFood(newFood: Food): Observable<any>{
+    return this.http.post(`${this.apiUrl}`, JSON.stringify(newFood));
   }
 }

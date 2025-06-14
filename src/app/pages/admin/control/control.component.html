@@ -10,7 +10,8 @@
             </select>
         </form>
         <div>
-            <button>Új étel hozzáadása</button>
+            <button (click)="newFood()">Új étel hozzáadása</button>
+            <button>Kategóriák szerkeztése</button>
             <button (click)="logout()">Kijelentkezés</button>
         </div>
     </div>
@@ -26,7 +27,8 @@
                 <div>{{food.name}}</div>
                 <div>{{food.description}}</div>
                 <div>{{food.price}}</div>
-                <button>Szerkeszt</button>
+                <button (click)="showDialog(food)">Szerkeszt</button>
+                <button (click)="deleteFood(food)">Törlés</button>
             </div>
         }
         <div>Összes termék: {{foods.length}}</div>

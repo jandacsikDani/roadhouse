@@ -23,7 +23,7 @@ export class MenuController{
 
     async create(req: Request, res: Response){
         const { typeid, name, description, price } = req.body;
-        const newItem = await this.service.create(typeid, name, description, price);
+        const newItem = await this.service.create(Number(typeid), name, description, price);
         res.status(201).json(newItem);
     }
 
@@ -32,5 +32,9 @@ export class MenuController{
         const items = await this.service.getFoodsByTypeId(id);
         if(items.length === 0) res.status(404).json({ message: "Food type dosent exits"});
         else res.json(items);
+    }
+
+    async deleteFood(req: Request, res: Response){
+        
     }
 }

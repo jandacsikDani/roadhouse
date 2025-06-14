@@ -1,5 +1,5 @@
 export interface Food{
-    id: number,
+    id?: number,
     typeid: number,
     name: string,
     description: string,

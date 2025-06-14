@@ -1,0 +1,42 @@
+<div class="modal-backdrop" (click)="close()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <h2>Szerkesztés</h2>
+        <form [formGroup]="edit" id="form">
+            <label for="cat">Kategória</label>
+            <select id="cat" formControlName="cat">
+                @for (foodtype of foodTypes; track $index){
+                    <option value="{{foodtype.id}}">{{foodtype.name}}</option>
+                }
+            </select>
+            <label for="name">Termék neve</label>
+            <input type="text" id="name" formControlName="name">
+            <label for="desc">Leírás</label>
+            <textarea id="desc" formControlName="desc"></textarea>
+            @if(!pizza){
+                <label for="price">Ár</label>
+                <input type="text" id="price" formControlName="price">
+            }
+            @if(pizza){
+                <div id="pizzaprice">
+                    <div>Ár</div>
+                    <div>
+                        <div>32cm</div>
+                        <div>50cm</div>
+                        <input type="text" formControlName="smallprice">
+                        <input type="text" formControlName="bigprice">
+                    </div>
+                </div>
+            }
+            @if(soda){
+                <div id="soda">
+                    <label for="return">Visszaváltási díj</label>
+                    <input type="checkbox" id="return" [checked]="sodaChacked">
+                    <input type="number" step="50" min="50" value="50">
+                    <div>Ft</div>
+                </div>
+            }
+        </form>
+        <button (click)="save()">Mentés</button>
+        <button (click)="close()">Bezárás</button>
+    </div>
+</div>

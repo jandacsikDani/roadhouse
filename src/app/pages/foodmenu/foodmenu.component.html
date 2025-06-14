@@ -4,8 +4,41 @@
         <h1 id="header">Étlap</h1>
         <span></span>
     </div>
-    <div class="section">
-        <div class="section_header" id="pizza">
+    @for (type of foodTypes; track $index) {
+        <div class="section" id="{{type.id}}">
+            <div class="section_header">
+                <span></span>
+                <h2>{{type.name}}</h2>
+                <span></span>
+            </div>
+            @for (food of foods; track $index) {
+                @if(food.typeid == type.id){
+                    @if($index == 0 && type.id == 1){
+                        <div class="section_entry">
+                            <div class="entry_content">
+                                <div>{{food.name}}</div>
+                                <div>{{food.description}}</div>
+                            </div>
+                            <div class="entry_price">
+                                <div>32cm / 50cm</div>
+                                <div>{{food.price}}</div>
+                            </div>
+                        </div>
+                    }@else{
+                        <div class="section_entry">
+                        <div class="entry_content">
+                            <div>{{food.name}}</div>
+                            <div>{{food.description}}</div>
+                        </div>
+                        <div class="entry_price">{{food.price}}</div>
+                        </div>
+                    }
+                }
+            }
+        </div>
+    }
+</div>
+        <!--<div class="section_header" id="pizza">
             <span></span>
             <h2>Pizzák</h2>
             <span></span>
@@ -302,5 +335,4 @@
                 </div>
                 <div class="entry_price">500Ft + 50Ft betétdíj</div>
             </div>
-        </div>
-</div>
+        </div>-->

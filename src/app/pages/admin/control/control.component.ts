@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
 import { MenuService } from '../../../shared/services/menu/menu.service';
 import { FoodType } from '../../../shared/models/FoodType';
 import { Food } from '../../../shared/models/Food';
 import { Router } from '@angular/router';
+import { DialogPanelComponent } from '../../../components/dialog-panel/dialog-panel.component';
+import { DialogServiceService } from '../../../shared/services/dialog/dialog-service.service';
+import { NewFoodService } from '../../../shared/services/new-food/new-food.service';
 
 @Component({
   selector: 'app-control',
@@ -14,12 +17,35 @@ import { Router } from '@angular/router';
 export class ControlComponent implements OnInit{
   public foodtypes: FoodType[] = [];
   public foods: Food[] = [];
+  dialogOpen = false;
 
-  constructor(private service: MenuService, private router: Router){}
+  constructor(private service: MenuService, private router: Router, 
+    private dialogService: DialogServiceService,
+    private newFoodService: NewFoodService
+  ){}
 
   sort = new FormGroup({
     foodType: new FormControl('0')
   });
+
+  newFood(){
+    this.newFoodService.open();
+  }
+
+  deleteFood(food: Food){
+    
+  }
+
+  showDialog(food: Food){
+    this.foodtypes.forEach(element => {
+      if(element.id == food.typeid){
+        this.dialogService.open({
+          food: food,
+          type: element
+        });
+      }
+    });
+  }
 
   foodTypeChange(){
     this.foods = [];
