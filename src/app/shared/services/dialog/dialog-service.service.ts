@@ -13,22 +13,33 @@ export class DialogServiceService {
 
   constructor() { }
 
-  open(data: { food: Food, type: FoodType}){
-    if(this.dialogRef) return;
+  open(data: { food: Food, type: FoodType}): Promise<'UPDATED' | 'CANCELD'>{
+    if(this.dialogRef) return Promise.resolve('CANCELD');
 
-    this.dialogRef = createComponent(DialogPanelComponent, {
-      environmentInjector: this.appRef.injector,
-      elementInjector: this.injector
-    });
+    return new Promise((resolve) => {
+      this.dialogRef = createComponent(DialogPanelComponent, {
+        environmentInjector: this.appRef.injector,
+        elementInjector: this.injector
+      });
 
-    this.dialogRef.instance.food = data.food;
-    this.dialogRef.instance.type = data.type;
+      this.dialogRef.instance.food = data.food;
+      this.dialogRef.instance.type = data.type;
 
-    this.dialogRef.instance.closed.subscribe(() => this.close());
+      this.dialogRef.instance.closed.subscribe(() => {
+        this.close();
+        resolve('CANCELD');
+      });
 
-    this.appRef.attachView(this.dialogRef.hostView);
-    const domElem = (this.dialogRef.hostView as any).rootNodes[0] as HTMLElement;
-    document.body.appendChild(domElem);
+      this.dialogRef.instance.saved.subscribe(() => {
+        this.close();
+        resolve('UPDATED');
+      });
+
+
+      this.appRef.attachView(this.dialogRef.hostView);
+      const domElem = (this.dialogRef.hostView as any).rootNodes[0] as HTMLElement;
+      document.body.appendChild(domElem);
+    })
   }
 
   close(){

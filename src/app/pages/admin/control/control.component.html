@@ -22,14 +22,18 @@
             <div>Ár</div>
             <div>Művelet</div>
         </div>
-        @for(food of foods; track $index){
-            <div class="entry">
-                <div>{{food.name}}</div>
-                <div>{{food.description}}</div>
-                <div>{{food.price}}</div>
-                <button (click)="showDialog(food)">Szerkeszt</button>
-                <button (click)="deleteFood(food)">Törlés</button>
-            </div>
+        @for(type of foodtypes; track $index){
+            @for(food of foods; track $index){
+                @if(food.typeid == type.id){
+                    <div class="entry">
+                        <div>{{food.name}}</div>
+                        <div>{{food.description}}</div>
+                        <div>{{food.price}}</div>
+                        <button (click)="editFood(food)">Szerkeszt</button>
+                        <button (click)="deleteFood(food)">Törlés</button>
+                    </div>
+                }
+            }
         }
         <div>Összes termék: {{foods.length}}</div>
     </div>

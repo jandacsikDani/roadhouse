@@ -15,7 +15,7 @@ export const routes: Routes = [
         { path: 'rolunk', component: PlaceComponent},
         { path: 'etlap', component: FoodmenuComponent}
     ]},
-    { path: 'admin', component: AdminLayoutComponent, children: [
+    { path: 'admin', component: AdminLayoutComponent, title: 'RH - Admin', children: [
         { path: '', component: AdminComponent},
         { path: 'control', component: ControlComponent, canActivate: [adminGuard]}
     ]},

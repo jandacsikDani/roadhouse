@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { firstValueFrom, Observable } from 'rxjs';
 import { Food } from '../../models/Food';
 
 @Injectable({
@@ -23,7 +23,16 @@ export class MenuService{
     return this.http.get<{id: number, typeid: number, name: string, description: string, price: string}[]>(`${this.apiUrl}/foodTypes/${id}`);
   }
 
-  addNewFood(newFood: Food): Observable<any>{
-    return this.http.post(`${this.apiUrl}`, JSON.stringify(newFood));
+  addNewFood(newFood: Food): Observable<Food>{
+    return this.http.post<Food>(`${this.apiUrl}`, JSON.stringify(newFood));
+  }
+
+  deleteFood(food: Food): Promise<{response: string, error?: string}>{
+    return firstValueFrom(this.http.delete<{response: string, error?: string}>(`${this.apiUrl}/${food.id}`));
+  }
+
+  updateFood(food: Food): Promise<{response: string, error?: string}>{
+    console.log(food);
+    return firstValueFrom(this.http.put<{response: string, error?: string}>(`${this.apiUrl}/${food.id}`, JSON.stringify(food)));
   }
 }

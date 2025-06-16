@@ -11,19 +11,29 @@ export class NewFoodService {
 
   constructor() { }
 
-  open(){
-    if(this.componentRef) return;
+  open(): Promise<'SAVED' | 'CANCELLED'>{
+    if(this.componentRef) return Promise.resolve('CANCELLED');
 
-    this.componentRef = createComponent(NewFoodComponent, {
-      environmentInjector: this.appRef.injector,
-      elementInjector: this.injector
+    return new Promise((resolve) => {
+      this.componentRef = createComponent(NewFoodComponent, {
+        environmentInjector: this.appRef.injector,
+        elementInjector: this.injector
+      });
+
+      this.componentRef.instance.closed.subscribe(() => {
+        this.close();
+        resolve('CANCELLED');
+      });
+
+      this.componentRef.instance.saved.subscribe(() => {
+        this.close();
+        resolve('SAVED');
+      });
+
+      this.appRef.attachView(this.componentRef.hostView);
+      const domElem = (this.componentRef.hostView as any).rootNodes[0] as HTMLElement;
+      document.body.appendChild(domElem);
     });
-
-    this.componentRef.instance.closed.subscribe(() => this.close());
-
-    this.appRef.attachView(this.componentRef.hostView);
-    const domElem = (this.componentRef.hostView as any).rootNodes[0] as HTMLElement;
-    document.body.appendChild(domElem);
   }
 
   close(){

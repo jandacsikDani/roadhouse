@@ -12,6 +12,7 @@ import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 })
 export class NewFoodComponent implements OnInit{
   @Output() closed = new EventEmitter<void>;
+  @Output() saved = new EventEmitter<void>;
 
   pizza: boolean = false;
   soda: boolean = false;
@@ -88,6 +89,7 @@ export class NewFoodComponent implements OnInit{
     this.menuService.addNewFood(newFood).subscribe({
       next: (response) => {
         console.log(response);
+        this.saved.emit();
       },
       error: (error) => {
         console.error(error);

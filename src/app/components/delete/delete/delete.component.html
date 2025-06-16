@@ -1,0 +1,12 @@
+<div class="modal-backdrop">
+    <div class="modal-content">
+        <h3>Biztos szeretnéd törölni az alábbi terméket?</h3>
+        <div>
+            <div>{{food?.name}}</div>
+            <div>{{food?.description}}</div>
+            <div>{{food?.price}}</div>
+        </div>
+        <button (click)="delete()">Igen</button>
+        <button (click)="cancel()">Nem</button>
+    </div>
+</div>

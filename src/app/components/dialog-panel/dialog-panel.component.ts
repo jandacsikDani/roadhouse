@@ -15,6 +15,7 @@ export class DialogPanelComponent implements OnInit{
   @Input() type: FoodType | null = null;
   
   @Output() closed = new EventEmitter<void>();
+  @Output() saved = new EventEmitter<void>();
   
   pizza: boolean = false;
   soda: boolean = false;
@@ -29,7 +30,56 @@ export class DialogPanelComponent implements OnInit{
     this.closed.emit();
   }
 
-  save(){}
+  save(){
+    let newFood!: Food;
+    if(this.pizza == true){
+      const editedPrice = (this.edit.get('smallprice')?.value as unknown) as string + "Ft / " + (this.edit.get('bigprice')?.value as unknown) as string + "Ft";
+      newFood = {
+        id: this.food?.id,
+        typeid: (this.edit.get('cat')?.value as unknown) as number,
+        name: (this.edit.get('name')?.value as unknown) as string,
+        description: (this.edit.get('desc')?.value as unknown) as string,
+        price: editedPrice
+      }
+    }else if (this.soda == true){
+      this.sodaChacked = (this.edit.get('isReturn')?.value as unknown) as boolean;
+      if(this.sodaChacked){
+        const editedPrice = (this.edit.get('price')?.value as unknown) as string + "Ft + " + (this.edit.get('returnPrice')?.value as unknown) as string + "Ft betétdíj";
+        newFood = {
+          id: this.food?.id,
+          typeid: (this.edit.get('cat')?.value as unknown) as number,
+          name: (this.edit.get('name')?.value as unknown) as string,
+          description: (this.edit.get('desc')?.value as unknown) as string,
+          price: editedPrice
+        }
+      }else{
+        const editedPrice = (this.edit.get('price')?.value as unknown) as string + "Ft";
+        newFood = {
+          id: this.food?.id,
+          typeid: (this.edit.get('cat')?.value as unknown) as number,
+          name: (this.edit.get('name')?.value as unknown) as string,
+          description: (this.edit.get('desc')?.value as unknown) as string,
+          price: editedPrice
+        }
+      }
+    }else{
+      const editedPrice = (this.edit.get('price')?.value as unknown) as string + "Ft";
+      newFood = {
+        id: this.food?.id,
+        typeid: (this.edit.get('cat')?.value as unknown) as number,
+        name: (this.edit.get('name')?.value as unknown) as string,
+        description: (this.edit.get('desc')?.value as unknown) as string,
+        price: editedPrice
+      }
+    }
+    this.menuServive.updateFood(newFood).then(response => {
+      console.log(response);
+      this.saved.emit();
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  }
 
   ngOnInit(): void {
     this.menuServive.getFoodTypes().subscribe(data => {

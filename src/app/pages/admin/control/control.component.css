@@ -36,3 +36,7 @@
     margin-bottom: 10px;
 }
 
+.entry:not(:first-of-type){
+    min-height: 40px;
+}
+

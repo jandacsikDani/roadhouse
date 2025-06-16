@@ -4,9 +4,10 @@ import { MenuService } from '../../../shared/services/menu/menu.service';
 import { FoodType } from '../../../shared/models/FoodType';
 import { Food } from '../../../shared/models/Food';
 import { Router } from '@angular/router';
-import { DialogPanelComponent } from '../../../components/dialog-panel/dialog-panel.component';
 import { DialogServiceService } from '../../../shared/services/dialog/dialog-service.service';
 import { NewFoodService } from '../../../shared/services/new-food/new-food.service';
+import { SnackBarService } from '../../../shared/services/snack-bar/snack-bar.service';
+import { DeleteService } from '../../../shared/services/delete/delete.service';
 
 @Component({
   selector: 'app-control',
@@ -21,7 +22,9 @@ export class ControlComponent implements OnInit{
 
   constructor(private service: MenuService, private router: Router, 
     private dialogService: DialogServiceService,
-    private newFoodService: NewFoodService
+    private newFoodService: NewFoodService,
+    private snackbarService: SnackBarService,
+    private deleteService: DeleteService
   ){}
 
   sort = new FormGroup({
@@ -29,20 +32,41 @@ export class ControlComponent implements OnInit{
   });
 
   newFood(){
-    this.newFoodService.open();
+    this.newFoodService.open().then(result => {
+      if(result == 'SAVED'){
+        this.snackbarService.show("Új termék sikeresen hozzáadva.");
+        this.loadFoods();
+      }
+    });
   }
 
   deleteFood(food: Food){
-    
+    this.deleteService.open(food).then(result => {
+      if(result == 'YES'){
+        this.service.deleteFood(food).then(() => {
+          this.snackbarService.show("Sikeres törlés!");
+          this.loadFoods();
+        })
+        .catch(error => {
+          this.snackbarService.show("Sikertelen törlés!");
+          console.error(error?.error?.error);
+        });
+      }
+    })
   }
 
-  showDialog(food: Food){
+  editFood(food: Food){
     this.foodtypes.forEach(element => {
       if(element.id == food.typeid){
         this.dialogService.open({
           food: food,
           type: element
-        });
+        }).then(result => {
+          if(result == 'UPDATED'){
+            this.snackbarService.show("A termék sikeresen frissítve!");
+            this.loadFoods();
+          }
+        })
       }
     });
   }
@@ -67,12 +91,20 @@ export class ControlComponent implements OnInit{
     this.router.navigate(['/admin']);
   }
 
-  ngOnInit(): void {
-    this.service.getFoodTypes().subscribe(data => {
-      this.foodtypes = data;
-    })
+  loadFoods(){
     this.service.getAllFood().subscribe(data => {
         this.foods = data;
     });
+  }
+
+  loadFoodTypes(){
+    this.service.getFoodTypes().subscribe(data => {
+      this.foodtypes = data;
+    })
+  }
+
+  ngOnInit(): void {
+    this.loadFoodTypes();
+    this.loadFoods();
   }
 }

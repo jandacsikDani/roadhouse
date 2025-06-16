@@ -35,6 +35,23 @@ export class MenuController{
     }
 
     async deleteFood(req: Request, res: Response){
-        
+        try{
+            await this.service.deleteFood(Number(req.params.id));
+            res.status(200).json({message: "Sikeres törlés"});
+        }catch (error){
+            res.status(500).json({message: "Sikertelen törlés", error: error});
+        }
+    }
+
+    async updateFood(req: Request, res: Response){
+        const id = Number(req.params.id);
+        const {name, description, price} = req.body;
+        try{
+            await this.service.updateFood(id, {name, description, price});
+            res.status(200).json({message: "Termék frissítve"});
+        }
+        catch(error){
+            res.status(500).json({message: "A termék frissítése sikretelen", error: error});
+        }
     }
 }

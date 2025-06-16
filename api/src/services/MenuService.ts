@@ -24,4 +24,12 @@ export class MenuService{
     async getFoodsByTypeId(typeid: number){
         return prisma.menuItems.findMany({ where: { typeid }});
     }
+
+    async deleteFood(id: number){
+        return prisma.menuItems.delete({where: {id}});
+    }
+
+    async updateFood(id: number, updatedFilds: Partial<{name: string, description: string, price: string}>){
+        return await prisma.menuItems.update({ where: {id}, data: updatedFilds});
+    }
 }
