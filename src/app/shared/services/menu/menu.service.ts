@@ -32,7 +32,6 @@ export class MenuService{
   }
 
   updateFood(food: Food): Promise<{response: string, error?: string}>{
-    console.log(food);
     return firstValueFrom(this.http.put<{response: string, error?: string}>(`${this.apiUrl}/${food.id}`, JSON.stringify(food)));
   }
 }

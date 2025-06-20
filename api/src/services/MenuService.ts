@@ -1,35 +1,52 @@
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import pool from "../shared/db";
 
 export class MenuService{
     async getFoodTypes(){
-        return prisma.menuTypes.findMany();
+        return (await pool.query("SELECT * FROM menutypes") as any[])[0];
     }
 
     async getAll(){
-        return prisma.menuItems.findMany();
+        return (await pool.query("SELECT * FROM menuitems") as any[])[0];
     }
 
     async getById(id: number){
-        return prisma.menuItems.findUnique({ where: { id }});
+        return (await pool.query("SELECT * FROM menuitems WHERE id = ?", [id]) as any[])[0];
     }
 
     async create(typeid: number, name: string, description: string, price: string){
-        return prisma.menuItems.create({
-            data: {typeid, name, description, price}
-        });
+        return (await pool.query("INSERT INTO menuItems (typeid, name, description, price) VALUES (?, ?, ?, ?)", [typeid, name, description, price]))[0];
     }
 
     async getFoodsByTypeId(typeid: number){
-        return prisma.menuItems.findMany({ where: { typeid }});
+        return (await pool.query("SELECT * FROM menuitems WHERE typeid = ?", [typeid]) as any[])[0];
     }
 
     async deleteFood(id: number){
-        return prisma.menuItems.delete({where: {id}});
+        return (await pool.query("DELETE FROM menuitems WHERE id = ?", [id]) as any[])[0];
     }
 
-    async updateFood(id: number, updatedFilds: Partial<{name: string, description: string, price: string}>){
-        return await prisma.menuItems.update({ where: {id}, data: updatedFilds});
+    async updateFood(id: number, updatedFields: Partial<{name: string, description: string, price: string}>){
+        const updates = [];
+        const values = [];
+
+        if (updatedFields.name !== undefined) {
+            updates.push("name = ?");
+            values.push(updatedFields.name);
+        }
+
+        if (updatedFields.description !== undefined) {
+            updates.push("description = ?");
+            values.push(updatedFields.description);
+        }
+
+        if (updatedFields.price !== undefined) {
+            updates.push("price = ?");
+            values.push(updatedFields.price);
+        }
+
+        values.push(id);
+
+        const sql = `UPDATE menuItems SET ${updates.join(", ")} WHERE id = ?`;
+        return await pool.query(sql, values);
     }
 }

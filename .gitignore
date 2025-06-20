@@ -5,8 +5,11 @@
 /out-tsc
 /bazel-out
 dist/*
+api/dist
 
 api/.env
+apiv2/.env
+apiv2/vendor
 
 # Node
 /node_modules
@@ -39,6 +42,7 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
+*.sql
 
 # System files
 .DS_Store

@@ -16,9 +16,12 @@ export class MenuController{
 
     async getById(req: Request, res: Response){
         const id = Number(req.params.id);
-        const item = await this.service.getById(id);
-        if(item) res.json(item);
-        else res.status(404).json({ message: "Item not found"});
+        try{
+            const items = await this.service.getById(id);
+            res.json(items);
+        }catch(error){
+            res.status(404).json({ message: "Item not found", error: error});
+        }
     }
 
     async create(req: Request, res: Response){
@@ -30,8 +33,8 @@ export class MenuController{
     async getFoodsByTypeId(req: Request, res: Response){
         const id = Number(req.params.id);
         const items = await this.service.getFoodsByTypeId(id);
-        if(items.length === 0) res.status(404).json({ message: "Food type dosent exits"});
-        else res.json(items);
+        //if(items.length == 0) res.status(404).json({ message: "Food type dosent exits"});
+        //else res.json(items);
     }
 
     async deleteFood(req: Request, res: Response){

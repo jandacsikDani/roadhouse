@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { food } from './food';
 import { ActivatedRoute } from '@angular/router';
 import { MenuService } from '../../shared/services/menu/menu.service';
 import { FoodType } from '../../shared/models/FoodType';
@@ -12,7 +11,6 @@ import { Food } from '../../shared/models/Food';
   styleUrl: './foodmenu.component.css'
 })
 export class FoodmenuComponent implements AfterViewInit, OnInit{
-pizza = food;
 foodTypes: FoodType[] = [];
 foods: Food[] = [];
 

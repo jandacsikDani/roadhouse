@@ -17,7 +17,11 @@ router.delete('/:id', verifyToken, controller.deleteFood.bind(controller));
 router.put('/:id', verifyToken, controller.updateFood.bind(controller));
 
 
-router.all('/', verifyToken, (req, res) => {
+router.all('/', (req, res) => {
+    res.status(405).json({ message: "Method not allowed"});
+});
+
+router.all('/foodTypes', (req, res) => {
     res.status(405).json({ message: "Method not allowed"});
 });
 

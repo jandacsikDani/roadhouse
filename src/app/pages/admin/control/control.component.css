@@ -40,3 +40,12 @@
     min-height: 40px;
 }
 
+@media (max-width: 900px){
+    #list{
+        width: 95%;
+    }
+    .entry{
+        grid-template-columns: 2fr 3fr 2fr 1fr 1fr;
+    }
+}
+
