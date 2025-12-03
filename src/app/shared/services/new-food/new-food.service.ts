@@ -4,6 +4,7 @@ import { NewFoodComponent } from '../../../components/new-food/new-food.componen
 @Injectable({
   providedIn: 'root'
 })
+
 export class NewFoodService {
   private appRef = inject(ApplicationRef);
   private injector = inject(Injector);

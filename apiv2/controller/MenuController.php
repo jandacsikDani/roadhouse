@@ -3,6 +3,7 @@ namespace Controller;
 
 use Core\Response;
 use Core\Database;
+use PDOException;
 use Services\MenuService;
 
 class MenuController{
@@ -118,6 +119,64 @@ class MenuController{
                 'error'=>$e->getMessage(),
                 'code'=>$e->getCode()
             ],500);
+        }
+    }
+
+    public function addNewType(){
+        $body = json_decode(file_get_contents("php://input"), true);
+        $name = $body['name'];
+        $order = $body['type_order'];
+        try{
+            $response = $this->menuService->addNewType($name, $order);
+            if($response){
+                Response::json(['message' => 'New type added successfully.'], 201);
+            }else{
+                Response::json(['message' => 'Failed to add new type.'], 400);
+            }
+        }
+        catch(PDOException $e){
+            Response::json([
+                'message'=>'Error when adding the requested item',
+                'error'=>$e->getMessage(),
+                'code'=>$e->getCode()
+            ],400);
+        }
+        
+    }
+
+    public function deleteType($id){
+        try{
+            $response = $this->menuService->deleteType($id);
+            if($response){
+                Response::json(['message' => 'Item deleted successfully.'], 200);
+            }else{
+                Response::json(['message' => 'Failed to delete the item.'], 400);
+            }
+        }
+        catch(PDOException $e){
+            Response::json([
+                'message'=>'Error when deleting the requested item',
+                'error'=>$e->getMessage(),
+                'code'=>$e->getCode()
+            ],400);
+        }
+    }
+
+    public function updateTypes(){
+        $body = json_decode(file_get_contents("php://input"), true);
+        try{
+            $response = $this->menuService->updateTypes($body);
+            if($response){
+                Response::json(['message' => 'Item update successfully.'], 200);
+            }else{
+                Response::json(['message' => 'Failed to update the item.'], 400);
+            }
+        }catch(PDOException $e){
+            Response::json([
+                'message'=>'Error when updating the requested item',
+                'error'=>$e->getMessage(),
+                'code'=>$e->getCode()
+            ],400);
         }
     }
 }

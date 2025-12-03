@@ -2,6 +2,7 @@
 namespace Services;
 
 use PDO;
+use PDOStatement;
 
 class MenuService{
     private PDO $db;
@@ -17,7 +18,7 @@ class MenuService{
     }
 
     public function getFoodTypes(): array{
-        $stmt = $this->db->query("SELECT * FROM menutypes");
+        $stmt = $this->db->query("SELECT * FROM menutypes ORDER BY type_order");
         $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $items;
     }
@@ -57,5 +58,28 @@ class MenuService{
         $stmt = $this->db->prepare("DELETE FROM menuitems WHERE id = ?");
         $response = $stmt->execute([$id]);
         return $response;
+    }
+
+    public function addNewType($name, $order): bool | PDOStatement{
+        $stmt = $this->db->prepare("INSERT INTO menutypes (name, type_order) VALUES (?,?)");
+        $stmt->execute([$name, $order]);
+        return $stmt;
+    }
+
+    public function deleteType($id){
+        $stmt = $this->db->prepare("DELETE FROM menutypes WHERE id = ?");
+        $stmt->execute([$id]);
+        return $stmt;
+    }
+
+    public function updateTypes($body){
+        $stmt = $this->db->prepare("UPDATE menutypes SET type_order = :ord WHERE id = :id");
+        foreach($body as $row){
+            $stmt->execute([
+                ":ord" => $row['type_order'],
+                ":id" => $row['id']
+            ]);
+        }
+        return $stmt;
     }
 }

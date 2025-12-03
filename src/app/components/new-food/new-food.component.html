@@ -4,7 +4,7 @@
         <form [formGroup]="edit" id="form">
             <label for="cat">Kategória</label>
             <select id="cat" formControlName="cat" (change)="typeChange($event)">
-                <option value="0">- Kérlek válassz -</option>
+                <option value="0">- Kérlek válassz -</option>   
                 @for (foodtype of foodTypes; track $index){
                     <option value="{{foodtype.id}}">{{foodtype.name}}</option>
                 }

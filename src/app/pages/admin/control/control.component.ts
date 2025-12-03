@@ -8,6 +8,7 @@ import { DialogServiceService } from '../../../shared/services/dialog/dialog-ser
 import { NewFoodService } from '../../../shared/services/new-food/new-food.service';
 import { SnackBarService } from '../../../shared/services/snack-bar/snack-bar.service';
 import { DeleteService } from '../../../shared/services/delete/delete.service';
+import { NewCategService } from '../../../shared/services/new-categ/new-categ.service';
 
 @Component({
   selector: 'app-control',
@@ -24,12 +25,23 @@ export class ControlComponent implements OnInit{
     private dialogService: DialogServiceService,
     private newFoodService: NewFoodService,
     private snackbarService: SnackBarService,
-    private deleteService: DeleteService
+    private deleteService: DeleteService,
+    private newCategoryService: NewCategService
   ){}
 
   sort = new FormGroup({
     foodType: new FormControl('0')
   });
+
+  newCategory(){
+    this.newCategoryService.open().then(result => {
+      if(result == 'SAVED'){
+        this.snackbarService.show("Új termékkategória sikeresen hozzáadva.");
+        this.loadFoodTypes();
+        this.loadFoods();
+      }
+    });
+  }
 
   newFood(){
     this.newFoodService.open().then(result => {

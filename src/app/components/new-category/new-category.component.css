@@ -1,0 +1,50 @@
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.typeRow{
+    display: grid;
+    grid-template-columns: 20px 1fr 50px;
+    column-gap: 10px;
+}
+
+.typeRow > img{
+    cursor: pointer;
+}
+
+#saveButton{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+#newTypeForm{
+    display: grid;
+    grid-template-columns: 1fr 75px;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 10px;
+}
+
+#newTypeForm > input,textarea,select{
+    margin-bottom: 10px;
+}

@@ -1,0 +1,24 @@
+<div class="modal-backdrop" (click)="close()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <h2>Étel típusok szerkeztése</h2>
+        @for(foodtype of foodTypes; track $index){
+            <div class="typeRow">
+                <img src="trash_icon.png" (click)="deleteType(foodtype.id)">
+                <div>{{foodtype.name}}</div>
+                <input type="number" [(ngModel)]="foodtype.type_order" min="1" (change)="reorder(foodtype)">
+            </div>
+        }
+        <div id="saveButton">
+            <button (click)="editOrder()">Mentés</button>
+        </div>
+
+        <h3>Új típus hozzáadása</h3>
+        <form [formGroup]="newType" id="newTypeForm">
+            <label for="name">Név</label>
+            <label for="order">Sorrend</label>
+            <input type="text" id="name" formControlName="name">
+            <input type="number" id="order" formControlName="order" min="1" value="1">
+        </form>
+        <button (click)="addType()">Hozzáadás</button>
+    </div>
+</div>
