@@ -52,6 +52,5 @@ export class AuthController{
             res.status(500).json({ message: "Server error"});
             return;
         }
-        
     }
 }
